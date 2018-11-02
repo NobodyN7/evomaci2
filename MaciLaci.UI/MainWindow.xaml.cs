@@ -26,6 +26,7 @@ namespace MaciLaci.UI
         //Defining variables and initializing classes
         Grid grid = new Grid();
         Engine Core = new Engine();
+        string mapPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Maps\Map1.txt");
         string[,] ImageMatrix = new string[10, 10];
         ColumnDefinition[] columns = new ColumnDefinition[10];
         RowDefinition[] rows = new RowDefinition[10];
@@ -46,7 +47,7 @@ namespace MaciLaci.UI
                 grid.ColumnDefinitions.Add(columns[i]);
             }
             Window.Content = grid;
-            Core.ReadMap(@"Maps\Map1.txt");
+            Core.ReadMap(mapPath);
             Core.GetMapElements(ImageMatrix);
             LoadMatrix(ImageMatrix);
         }
@@ -78,7 +79,7 @@ namespace MaciLaci.UI
             Image tree = new Image();
             tree.Width = 60;
             tree.Height = 60;
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Images\tree.jpg");
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Images\tree.jpg");
 
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
