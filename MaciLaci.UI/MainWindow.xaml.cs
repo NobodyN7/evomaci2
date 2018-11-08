@@ -50,6 +50,37 @@ namespace MaciLaci.UI
             Core.LoadMap(mapPath);
             Core.GetMapElements(ImageMatrix);
             LoadMatrix(ImageMatrix);
+            
+            Random rand = new Random();
+                  
+            StreamWriter writer = new StreamWriter(mapPath, false, Encoding.Default);
+            List<string> FieldObject = new List<String>();
+            FieldObject.Add("T");
+            FieldObject.Add("N");
+            FieldObject.Add("N");
+            FieldObject.Add("H");
+
+            int randomIndex;
+            string randomObject;
+            const int numberOfLines = 10;
+  
+            for (int i = 0; i < numberOfLines; i++)
+            {
+               
+
+                for (int j = 0; j < numberOfLines; j++)
+                {
+ 
+                    randomIndex = rand.Next(FieldObject.Count);
+
+                    randomObject = FieldObject[randomIndex]  + ";";
+                
+                    writer.Write(randomObject);
+                }
+                writer.WriteLine();
+
+            }
+            writer.Close();
         }
 
         //Loads the image matrix of the map
