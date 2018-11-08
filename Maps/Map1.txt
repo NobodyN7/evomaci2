@@ -4,7 +4,7 @@ T;T;N;N;T;T;T;N;N;T
 T;T;N;N;N;T;T;N;N;T
 T;T;N;N;N;T;T;N;N;T
 T;T;N;N;N;T;T;N;N;T
-T;T;N;N;T;T;N;N;N;T
-T;T;N;N;T;T;N;N;N;T
-T;T;N;N;N;N;T;N;T;T
+T;T;N;N;T;T;B;N;N;T
+T;T;N;B;T;T;N;N;N;T
+T;T;N;N;N;B;T;N;T;T
 T;T;N;N;N;N;N;N;T;T

@@ -47,7 +47,7 @@ namespace MaciLaci.UI
                 grid.ColumnDefinitions.Add(columns[i]);
             }
             Window.Content = grid;
-            Core.ReadMap(mapPath);
+            Core.LoadMap(mapPath);
             Core.GetMapElements(ImageMatrix);
             LoadMatrix(ImageMatrix);
         }
@@ -64,6 +64,9 @@ namespace MaciLaci.UI
                         case "T":
                             LoadTree(i, j);
                             break;
+                        case "B":
+                            LoadBasket(i, j);
+                            break;
                         case "N":
                             break;
                         default:
@@ -79,11 +82,29 @@ namespace MaciLaci.UI
             Image tree = new Image();
             tree.Width = 60;
             tree.Height = 60;
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Images\tree.jpg");
+            Barrier B = new Barrier(x,y);
 
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
-            bi.UriSource = new Uri(path, UriKind.RelativeOrAbsolute);
+            bi.UriSource = new Uri(B.GetPath(), UriKind.RelativeOrAbsolute);
+            bi.EndInit();
+
+            tree.Source = bi;
+
+            Grid.SetColumn(tree, y);
+            Grid.SetRow(tree, x);
+            grid.Children.Add(tree);
+        }
+        public void LoadBasket(int x, int y)
+        {
+            Image tree = new Image();
+            tree.Width = 60;
+            tree.Height = 60;
+            Basket B = new Basket(x, y);
+
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            bi.UriSource = new Uri(B.GetPath(), UriKind.RelativeOrAbsolute);
             bi.EndInit();
 
             tree.Source = bi;

@@ -9,44 +9,20 @@ namespace MaciLaci.Backend
 {
     public class Engine
     {
-        const int numberOfLines = 10;
-        Map map = new Map();
-        string[,] MapCells = new string[10, 10];
-        string[] WhatObjectIsHere = new string[10];
+        Map map = new Map("1");
 
-        /*Reads the .txt file for the map layout by splitting each of line string in the .txt
-         *the letters inside the .txt can be of 5 different types
-         * N for Nothing
-         * T for Tree
-         * B for Basket
-         * H for Hunter
-         * and L for Laszlo the Bear
-         * after each line is read the indentifier are copied into the MapCell matrix for map generation
-        */
-        public void ReadMap(string filepath)
+        public void LoadMap(string path)
         {
-            string Line;
-            StreamReader File = new StreamReader(filepath);
-            for (int i = 0; i < numberOfLines; i++)
-            {
-                Line = File.ReadLine();
-                for (int j = 0; j < numberOfLines; j++)
-                {
-                    WhatObjectIsHere = Line.Split(';');
-                    MapCells[i, j] = WhatObjectIsHere[j];
-                }
-            }
-            File.Close();
+            map.ReadMap(path);
         }
-
         //Copies the MapCell matrix into the given parameter matrix so the UI can load the map that has been read last time
         public void GetMapElements(string[,] Matrix)
         {
-            for (int i = 0; i < numberOfLines; i++)
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < numberOfLines; j++)
+                for (int j = 0; j < 10; j++)
                 {
-                    Matrix[i, j] = MapCells[i,j];
+                    Matrix[i, j] = map.GetMapCells(i,j);
                 }
             }
         }
